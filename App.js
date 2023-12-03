@@ -25,17 +25,17 @@ export default function App() {
         setCurrentNumber((fistNumber - lastNumber).toString())
         return
       case 'x':
-        setCurrentNumber((fistNumber + lastNumber).toString())
+        setCurrentNumber((fistNumber * lastNumber).toString())
         return
       case '/': 
-        setCurrentNumber((fistNumber - lastNumber).toString())
+        setCurrentNumber((fistNumber / lastNumber).toString())
         return
     }
   }
 
   function handleInput(buttonPressed){
     console.log(buttonPressed) // Mostra no Console a tecla pressionada
-    if(buttonPressed === '+' | buttonPressed === "-" | buttonPressed === "x" | buttonPressed === "/" ){
+    if(buttonPressed === '+' || buttonPressed === "-" || buttonPressed === "x" || buttonPressed === "/" ){
       setCurrentNumber(currentNumber + " " + buttonPressed + " ")
       return
     }
@@ -51,11 +51,15 @@ export default function App() {
         setLastNumber(currentNumber + " = ")
         calculator()
         return
+     /*  case '+/-': */
       case '+/-':
-        return
+        setCurrentNumber((parseFloat(currentNumber) * -1).toString());
+      break;
+      default:
+        setCurrentNumber(currentNumber + buttonPressed);
+        break; 
     }
-
-    setCurrentNumber(currentNumber + buttonPressed)
+   
   }
 
 
@@ -66,7 +70,7 @@ export default function App() {
       <View style={styles.results}>
         <Text style={styles.historyText}>{lastNumber}</Text>
         <Text style={styles.resultText}>{currentNumber}</Text>
-      <View>
+      </View>
 
       {/* Area onde os botões são exibidos*/}
       <View style={styles.buttons}>
