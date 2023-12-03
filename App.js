@@ -51,11 +51,15 @@ export default function App() {
         setLastNumber(currentNumber + " = ")
         calculator()
         return
+     /*  case '+/-': */
       case '+/-':
-        return
+        setCurrentNumber((parseFloat(currentNumber) * -1).toString());
+      break;
+      default:
+        setCurrentNumber(currentNumber + buttonPressed);
+        break; 
     }
-
-    setCurrentNumber(currentNumber + buttonPressed)
+   
   }
 
 
